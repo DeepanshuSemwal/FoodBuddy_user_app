@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "640311320063",
+    "project_id": "wow-food-seller-app",
+    "storage_bucket": "wow-food-seller-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640311320063:android:82931d35fac4367a5f9bca",
+        "android_client_info": {
+          "package_name": "com.example.wow_food_seller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640311320063-hb0bu371rcagu4pv4csck38ri38rfbms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaLfSlEnk0YkE0lVfJ4w1OO14iz1nTgXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640311320063-hb0bu371rcagu4pv4csck38ri38rfbms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640311320063:android:5d15bfe2580d4dff5f9bca",
+        "android_client_info": {
+          "package_name": "com.example.wow_food_user_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640311320063-hb0bu371rcagu4pv4csck38ri38rfbms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaLfSlEnk0YkE0lVfJ4w1OO14iz1nTgXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640311320063-hb0bu371rcagu4pv4csck38ri38rfbms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
