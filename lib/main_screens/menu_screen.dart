@@ -42,8 +42,8 @@ class _MenusScreenState extends State<MenusScreen> {
           ),
         ),
         title: const Text(
-          "iFood",
-          style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
+          "Wow Food",
+          style: TextStyle(fontSize: 45, fontFamily: "Oswald-Bold"),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
@@ -54,7 +54,7 @@ class _MenusScreenState extends State<MenusScreen> {
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection("sellers")
-                .doc(widget.model!.sellerId)
+                .doc(widget.model!.sellerUID)
                 .collection("menu")
                 .orderBy("published", descending: true)
                 .snapshots(),

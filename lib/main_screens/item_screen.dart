@@ -34,10 +34,10 @@ class _ItemsScreenState extends State<ItemsScreen> {
             stream: FirebaseFirestore.instance
                 .collection("sellers")
                 .doc(widget.model!.sellersId)
-                .collection("menus")
+                .collection("menu")
                 .doc(widget.model!.menuID)
                 .collection("items")
-                .orderBy("publishedDate", descending: true)
+                .orderBy("published", descending: true)
                 .snapshots(),
             builder: (context, snapshot)
             {

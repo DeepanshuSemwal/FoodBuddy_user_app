@@ -18,6 +18,10 @@ class _ItemDesignState extends State<ItemDesign> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: ()
+      {
+
+      },
 
       splashColor: Colors.red,
       child: Padding(

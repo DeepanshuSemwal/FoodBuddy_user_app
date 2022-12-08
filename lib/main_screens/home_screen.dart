@@ -150,11 +150,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (context,int index)
                             {
 
-                              Sellers sModel=Sellers.fromJson(
+                              Sellers sellerModel=Sellers.fromJson(
                                   snapshot.data!.docs[index].data()! as Map<String,dynamic>
                               );
                               return  SellersInfoDesign(
-                                model:sModel,
+                                model:sellerModel,
                                 context: context,
                               );
                              // return Text("print");

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wow_food_user_app/main_screens/menu_screen.dart';
 
 import '../models/sellers.dart';
 
@@ -16,6 +17,10 @@ class _SellersInfoDesignState extends State<SellersInfoDesign> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: ()
+      {
+        Navigator.push(context, MaterialPageRoute(builder: (c)=>MenusScreen(model: widget.model,)));
+      },
 
       splashColor: Colors.red,
       child: Padding(
