@@ -39,8 +39,8 @@ class _CustumAppBarState extends State<CustumAppBar>
         },
       ),
       title: const Text(
-        "iFood",
-        style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
+        "Wow Food",
+        style: TextStyle(fontSize: 45, fontFamily: "DancingScript"),
       ),
       centerTitle: true,
       automaticallyImplyLeading: true,

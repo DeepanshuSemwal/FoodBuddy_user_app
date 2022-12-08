@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wow_food_user_app/main_screens/items_detail_screen.dart';
 
 import '../models/items.dart';
 import '../models/menus.dart';
@@ -20,7 +21,7 @@ class _ItemDesignState extends State<ItemDesign> {
     return InkWell(
       onTap: ()
       {
-
+         Navigator.push(context, MaterialPageRoute(builder: (c)=>ItemDetialScreen(model: widget.model)));
       },
 
       splashColor: Colors.red,

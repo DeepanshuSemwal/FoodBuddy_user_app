@@ -43,7 +43,7 @@ class _MenusScreenState extends State<MenusScreen> {
         ),
         title: const Text(
           "Wow Food",
-          style: TextStyle(fontSize: 45, fontFamily: "Oswald-Bold"),
+          style: TextStyle(fontSize: 45, fontFamily: "DancingScript"),
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
