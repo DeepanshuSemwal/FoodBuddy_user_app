@@ -54,7 +54,7 @@ class _MenusScreenState extends State<MenusScreen> {
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection("sellers")
-                .doc(widget.model!.sellerUID)
+                .doc(widget.model!.sellerId)
                 .collection("menu")
                 .orderBy("published", descending: true)
                 .snapshots(),
