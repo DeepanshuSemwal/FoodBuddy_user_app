@@ -48,7 +48,7 @@ class _CustumAppBarState extends State<CustumAppBar>
         Stack(
           children: [
             IconButton(
-              icon: const Icon(Icons.shopping_cart, color: Colors.cyan,),
+              icon: const Icon(Icons.shopping_cart, color: Colors.white,),
               onPressed: ()
               {
                 //send user to cart screen
@@ -60,13 +60,13 @@ class _CustumAppBarState extends State<CustumAppBar>
                   Icon(
                     Icons.brightness_1,
                     size: 20.0,
-                    color: Colors.green,
+                    color: Colors.white,
                   ),
                   Positioned(
                     top: 3,
                     right: 4,
                     child: Center(
-                      child: Text("0", style: TextStyle(color: Colors.white, fontSize: 12),),
+                      child: Text("0", style: TextStyle(color: Colors.black, fontSize: 12),),
                     ),
                   ),
                 ],
