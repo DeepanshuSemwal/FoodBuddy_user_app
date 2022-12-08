@@ -7,7 +7,7 @@ import 'package:wow_food_user_app/authentication/auth_screen.dart';
 import 'package:wow_food_user_app/global/global.dart';
 import 'package:wow_food_user_app/models/sellers.dart';
 import 'package:wow_food_user_app/widgets/custum_drawer.dart';
-import 'package:wow_food_user_app/widgets/design_info.dart';
+import 'package:wow_food_user_app/widgets/sellers_info.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
 
 
@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Sellers sModel=Sellers.fromJson(
                                   snapshot.data!.docs[index].data()! as Map<String,dynamic>
                               );
-                              return  Design_Info(
+                              return  SellersInfoDesign(
                                 model:sModel,
                                 context: context,
                               );

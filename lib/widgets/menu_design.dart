@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../models/menus.dart';
 import '../models/sellers.dart';
 
-class Design_Info extends StatefulWidget {
+class MenuDesign extends StatefulWidget {
 
-  Sellers? model;
+  Menus? model;
   BuildContext? context;
-  Design_Info({required this.model,required this.context});
+  MenuDesign({required this.model,required this.context});
 
   @override
-  State<Design_Info> createState() => _Design_InfoState();
+  State<MenuDesign> createState() => _MenuDesignState();
 }
 
-class _Design_InfoState extends State<Design_Info> {
+class _MenuDesignState extends State<MenuDesign> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -33,13 +34,13 @@ class _Design_InfoState extends State<Design_Info> {
               ),
               Image.network(
 
-                widget.model!.sellerAvatar!,
+                widget.model!.thumbnail!,
                 height:220,
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 2,),
               Text(
-                widget.model!.sellerName!,
+                widget.model!.menuTitle!,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -48,7 +49,7 @@ class _Design_InfoState extends State<Design_Info> {
               ),
 
               Text(
-                widget.model!.sellerEmail!,
+                widget.model!.menuInfo!,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 12,
