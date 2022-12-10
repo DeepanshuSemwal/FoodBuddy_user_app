@@ -143,6 +143,7 @@ class _SignUpState extends State<SignUp> {
           "status": "approved",
           "lat": position!.latitude,
           "lon": position!.longitude,
+          "usercart":["garbage value"],
 
       }
     );
@@ -183,6 +184,7 @@ class _SignUpState extends State<SignUp> {
         await sharedPreferences!.setString("phone", phoneController.text.trim());
         await sharedPreferences!.setString("image", customerImageUrl);
         await sharedPreferences!.setString("Address",locationController.text.trim());
+        await sharedPreferences!.setStringList("userCart", ["garbage value"]);
 
 
       }

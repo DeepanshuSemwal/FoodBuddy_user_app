@@ -29,7 +29,7 @@ class CustumDrawer extends StatelessWidget {
                       width: 160,
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(
-                          sharedPreferences!.getString("photourl")!,
+                          sharedPreferences!.getString("image")!,
 
                         ),
                       ),

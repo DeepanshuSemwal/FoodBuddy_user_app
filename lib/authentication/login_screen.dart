@@ -92,6 +92,11 @@ class _LoginScreenState extends State<LoginScreen> {
               .setString("photourl", snapshot.data()!["customerAvatar"]);
           await sharedPreferences!
               .setString("phone", snapshot.data()!["phone"]);
+
+          List<String> userCartList=snapshot.data()!["userCart"].cast<String>();
+          await sharedPreferences!
+              .setStringList("userCart", userCartList);
+
           Navigator.pop(context);
           Navigator.push(context, MaterialPageRoute(builder: (c)=> HomeScreen()));
         }
