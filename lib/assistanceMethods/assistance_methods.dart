@@ -4,13 +4,45 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wow_food_user_app/global/global.dart';
 
 
+
+separateItemIDs()
+{
+  List<String> separateItemIDsList=[], defaultItemList=[];
+  int i=0;
+
+  defaultItemList = sharedPreferences!.getStringList("userCart")!;
+
+  for(i; i<defaultItemList.length; i++)
+  {
+    //56557657:7
+    String item = defaultItemList[i].toString();
+    var pos = item.lastIndexOf(":");
+
+    //56557657
+    String getItemId = (pos != -1) ? item.substring(0, pos) : item;
+
+    print("\nThis is itemID now = " + getItemId);
+
+    separateItemIDsList.add(getItemId);
+  }
+
+  print("\nThis is Items List now = ");
+  print(separateItemIDsList);
+
+  return separateItemIDsList;
+}
+
+
+
+
+
 addItemtoCart(String? foodItemId,BuildContext context,int itemCounter)
 {
 
   List<String>? tempList=sharedPreferences!.getStringList("userCart");
   tempList!.add(foodItemId!+ ":$itemCounter");
 
-  FirebaseFirestore.instance.collection("user").doc(firebaseAuth.currentUser!.uid).update({
+  FirebaseFirestore.instance.collection("customer").doc(firebaseAuth.currentUser!.uid).update({
     "userCart":tempList,
 
   }).then((value) {

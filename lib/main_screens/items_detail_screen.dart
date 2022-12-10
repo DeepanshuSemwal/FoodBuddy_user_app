@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:number_inc_dec/number_inc_dec.dart';
 import 'package:wow_food_user_app/models/items.dart';
 import 'package:wow_food_user_app/widgets/custum_app_bar.dart';
@@ -91,8 +92,10 @@ class _ItemDetialScreenState extends State<ItemDetialScreen> {
             onTap: ()
             {
               int itemCounter=int.parse(counterController.text);
+              List<String> seperateItemIDsList= separateItemIDs();
               // 1 check item already exist
               // 2 calling add item function
+              seperateItemIDsList.contains(widget.model!.itemId)?Fluttertoast.showToast(msg: "Item already present to cart"):
               addItemtoCart(widget.model!.itemId,context,itemCounter);
             },
 
