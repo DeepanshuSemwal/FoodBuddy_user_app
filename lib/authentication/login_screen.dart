@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
           await sharedPreferences!
               .setString("phone", snapshot.data()!["phone"]);
 
-          List<String> userCartList=snapshot.data()!["userCart"].cast<String>();
+          List<String> userCartList=snapshot.data()!["usercart"].cast<String>();
           await sharedPreferences!
               .setStringList("userCart", userCartList);
 

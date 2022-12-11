@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wow_food_user_app/assistanceMethods/cart_item_counter.dart';
 import 'package:wow_food_user_app/global/global.dart';
 import 'package:wow_food_user_app/slash_screen/slash_screen.dart';
 
@@ -23,10 +25,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(create: (c)=>CartItemCounter()),
+    ],
+
+    child:  MaterialApp(
       title: "customer App",
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const SlashScreen(),
+    ),
+
     );
   }
 }
