@@ -33,7 +33,7 @@ class Menus
   {
     final Map<String,dynamic> data=Map<String,dynamic>();
     data["menuID"]=menuID;
-    data["sellerId"]=sellersId;
+    data["sellersId"]=sellersId;
     data["menuTitle"]=menuTitle;
     data["menuInfo"]=menuInfo;
     data["published"]=published;

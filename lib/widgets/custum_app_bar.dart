@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wow_food_user_app/main_screens/cart_screen.dart';
 
 import '../assistanceMethods/cart_item_counter.dart';
 
 class CustumAppBar extends StatefulWidget with PreferredSizeWidget
 {
   final PreferredSizeWidget? bottom;
-  CustumAppBar({this.bottom});
+  final String? sellerUID;
+  CustumAppBar({this.bottom,this.sellerUID});
 
   @override
   _CustumAppBarState createState() => _CustumAppBarState();
@@ -55,6 +57,7 @@ class _CustumAppBarState extends State<CustumAppBar>
               onPressed: ()
               {
                 //send user to cart screen
+                Navigator.push(context, MaterialPageRoute(builder: (c)=>CartScreen(sellerUID: widget.sellerUID,)));
 
               },
             ),

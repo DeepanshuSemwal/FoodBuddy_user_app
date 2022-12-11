@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+import 'package:wow_food_user_app/assistanceMethods/cart_item_counter.dart';
 import 'package:wow_food_user_app/global/global.dart';
 
 
@@ -49,6 +51,10 @@ addItemtoCart(String? foodItemId,BuildContext context,int itemCounter)
 
     Fluttertoast.showToast(msg: "Item Added Sucessfully");
     sharedPreferences!.setStringList("userCart",tempList);
+
+    // update batch
+    Provider.of<CartItemCounter>(context,listen: false).displayCartListItemsNumber();
+
   });
 
 

@@ -26,7 +26,7 @@ class _ItemDetialScreenState extends State<ItemDetialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustumAppBar(),
+      appBar: CustumAppBar(sellerUID: widget.model!.sellersId,),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
