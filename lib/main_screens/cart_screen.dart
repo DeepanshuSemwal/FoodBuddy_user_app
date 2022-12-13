@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
 import 'package:wow_food_user_app/widgets/custum_app_bar.dart';
 
 class CartScreen extends StatefulWidget {
@@ -11,6 +12,14 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+
+  @override
+  void initState()
+  {
+    super.initState();
+    seperateItemQuantities();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
