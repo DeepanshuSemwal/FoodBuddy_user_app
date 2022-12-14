@@ -67,7 +67,7 @@ class _CustumAppBarState extends State<CustumAppBar>
                   Icon(
                     Icons.brightness_1,
                     size: 20.0,
-                    color: Colors.white,
+                    color: Colors.redAccent,
                   ),
                   Positioned(
                     top: 3,

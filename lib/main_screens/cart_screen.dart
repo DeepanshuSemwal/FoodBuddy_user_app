@@ -26,7 +26,7 @@ class _CartScreenState extends State<CartScreen> {
   void initState()
   {
     super.initState();
-    seperateItemQuantities();
+    separateItemQuantityList=seperateItemQuantities();
   }
 
   @override
@@ -112,7 +112,10 @@ class _CartScreenState extends State<CartScreen> {
                     context: context,
                   quanNumber: separateItemQuantityList![index],
                 );
-              }));
+              },
+                childCount: snapshot.hasData ? snapshot.data!.docs.length :0 ,
+
+              ));
 
 
 
