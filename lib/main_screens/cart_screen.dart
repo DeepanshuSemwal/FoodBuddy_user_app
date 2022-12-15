@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
+import 'package:wow_food_user_app/assistanceMethods/total_amount.dart';
 import 'package:wow_food_user_app/widgets/cart_item_design.dart';
 import 'package:wow_food_user_app/widgets/custum_app_bar.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
@@ -28,6 +29,8 @@ class _CartScreenState extends State<CartScreen> {
   void initState()
   {
     super.initState();
+    totalAmount=0;
+    Provider.of<TotalAmount>(context,listen: false).displayTotalAmount(0);
     separateItemQuantityList=seperateItemQuantities();
   }
 
@@ -163,7 +166,32 @@ class _CartScreenState extends State<CartScreen> {
           // overall total amount
           SliverPersistentHeader(
               pinned: true,
-              delegate: TextWidgetHeader(title: "Total amount = 150")),
+              delegate: TextWidgetHeader(title:"Cart List"),
+
+          ),
+
+
+          SliverToBoxAdapter(
+            child: Consumer2<TotalAmount, CartItemCounter>(builder: (context, amountProvider, cartProvider, c)
+            {
+              return Padding(
+                padding: const EdgeInsets.all(8),
+                child: Center(
+                  child: cartProvider.count == 0
+                      ? Container() // if no item is selected in cart then return empty container
+                      : Text(
+                    "Total Price: " + amountProvider.tAmount.toString(),
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight:  FontWeight.w500,
+                    ),
+                  ),
+                ),
+              );
+            }),
+          ),
+
           // display cart items with quantity numbers
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection("items").where("itemId",whereIn: separateItemIDs()).orderBy("published",descending: true).snapshots(),
@@ -180,6 +208,25 @@ class _CartScreenState extends State<CartScreen> {
                 Items model = Items.fromJson(
                   snapshot.data!.docs[index].data()! as Map<String, dynamic>,
                 );
+
+                if(index==0)
+                  {
+                    totalAmount=0;
+                    totalAmount=totalAmount+(model.price!*separateItemQuantityList![index]);
+                  }
+                else
+                  {
+                    totalAmount=totalAmount+(model.price!*separateItemQuantityList![index]);
+                  }
+                // come to garbage value
+                if(snapshot.data!.docs.length-1==index)
+                  {
+                    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+                      
+                      Provider.of<TotalAmount>(context,listen: false).displayTotalAmount(totalAmount.toDouble());
+                    });
+                  }
+
                 return CartItemDesign(
                   model: model,
                     context: context,

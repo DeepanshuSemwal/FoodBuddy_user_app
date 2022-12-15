@@ -86,3 +86,8 @@ flutter:
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-Bold.ttf
+
+    - family: Cookie
+      fonts:
+        - asset: assets/fonts/Cookie-Regular.ttf
+
