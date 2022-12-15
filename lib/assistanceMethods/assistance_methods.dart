@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:wow_food_user_app/assistanceMethods/cart_item_counter.dart';
 import 'package:wow_food_user_app/global/global.dart';
+import 'package:wow_food_user_app/slash_screen/slash_screen.dart';
 
 
 
@@ -94,6 +95,20 @@ seperateItemQuantities()
 
 
   return separateQuantityList;
+
+
+}
+clearCart(context)
+{
+  sharedPreferences!.setStringList("userCart", ["garbage value"]);
+  List<String>?emptyList= sharedPreferences!.getStringList("userCart");
+  FirebaseFirestore.instance.collection("customer").doc(firebaseAuth.currentUser!.uid).update({"userCart":emptyList!}).then((value)
+  {
+    sharedPreferences!.setStringList("userCart", emptyList!);
+    Provider.of<CartItemCounter>(context,listen: false).displayCartListItemsNumber();
+
+  }
+  );
 
 
 }

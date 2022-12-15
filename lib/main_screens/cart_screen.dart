@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
 import 'package:wow_food_user_app/widgets/cart_item_design.dart';
 import 'package:wow_food_user_app/widgets/custum_app_bar.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
 import 'package:wow_food_user_app/widgets/text_widget_header.dart';
 
+import '../assistanceMethods/cart_item_counter.dart';
 import '../models/items.dart';
 
 class CartScreen extends StatefulWidget {
@@ -32,7 +34,78 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: CustumAppBar(sellerUID: widget.sellerUID),
+     appBar: AppBar(
+       flexibleSpace: Container(
+         decoration: BoxDecoration(
+           gradient: LinearGradient(
+               colors: <Color>[Colors.red.shade800,Colors.green.shade700],
+               begin:FractionalOffset(0.0,0.0,),
+               end:FractionalOffset(1.0,0.0),
+               stops: [1.0,0.0],
+               tileMode: TileMode.clamp
+
+           ),
+
+
+         ),
+       ),
+       leading: IconButton(
+         icon: const Icon(Icons.clear_all_outlined),
+         onPressed: ()
+         {
+           clearCart(context);
+         },
+       ),
+       title: const Text(
+         "Wow Food",
+         style: TextStyle(fontSize: 45, fontFamily: "DancingScript"),
+       ),
+       centerTitle: true,
+       automaticallyImplyLeading: true,
+       actions: [
+         Stack(
+           children: [
+             IconButton(
+               icon: const Icon(Icons.shopping_cart, color: Colors.white,),
+               onPressed: ()
+               {
+                 //send user to cart screen
+                 Navigator.push(context, MaterialPageRoute(builder: (c)=>CartScreen(sellerUID: widget.sellerUID,)));
+
+               },
+             ),
+             Positioned(
+               child: Stack(
+                 children:  [
+                   Icon(
+                     Icons.brightness_1,
+                     size: 20.0,
+                     color: Colors.redAccent,
+                   ),
+                   Positioned(
+                     top: 3,
+                     right: 4,
+                     child: Center(
+
+                       child: Consumer<CartItemCounter>(
+                         builder: (context, counter, c)
+                         {
+                           return Text(
+                             counter.count.toString(),
+                             style: const TextStyle(color: Colors.white, fontSize: 12),
+                           );
+                         },
+                       ),
+
+                     ),
+                   ),
+                 ],
+               ),
+             ),
+           ],
+         ),
+       ],
+     ),
       floatingActionButton: Row(
 
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -42,7 +115,7 @@ class _CartScreenState extends State<CartScreen> {
             child: FloatingActionButton.extended(
                 onPressed: ()
                 {
-
+                    clearCart(context);
                 },
                 label: Text("Clear Cart",
 

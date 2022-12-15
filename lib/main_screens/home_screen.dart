@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
 import 'package:wow_food_user_app/authentication/auth_screen.dart';
 import 'package:wow_food_user_app/global/global.dart';
 import 'package:wow_food_user_app/models/sellers.dart';
@@ -51,6 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
     "slider/27.jpg",
 
   ];
+
+  @override
+  void initState()
+  {
+    super.initState();
+    clearCart(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

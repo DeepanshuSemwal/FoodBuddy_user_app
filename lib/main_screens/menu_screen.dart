@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
 import 'package:wow_food_user_app/widgets/custum_drawer.dart';
 
 import '../models/menus.dart';
 import '../models/sellers.dart';
+import '../slash_screen/slash_screen.dart';
 import '../widgets/menu_design.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/text_widget_header.dart';
@@ -25,7 +28,6 @@ class _MenusScreenState extends State<MenusScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustumDrawer(),
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -47,6 +49,15 @@ class _MenusScreenState extends State<MenusScreen> {
         ),
         centerTitle: true,
         automaticallyImplyLeading: true,
+        leading: IconButton(
+          onPressed: ()
+          {
+            clearCart(context);
+            Navigator.push(context, MaterialPageRoute(builder: (c)=>SlashScreen()));
+            Fluttertoast.showToast(msg: "Cart has been cleared");
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: CustomScrollView(
         slivers: [
