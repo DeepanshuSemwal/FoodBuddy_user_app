@@ -7,6 +7,8 @@ import 'package:wow_food_user_app/assistanceMethods/total_amount.dart';
 import 'package:wow_food_user_app/global/global.dart';
 import 'package:wow_food_user_app/slash_screen/slash_screen.dart';
 
+import 'assistanceMethods/address_changer.dart';
+
 
 Future<void> main() async {
 
@@ -29,6 +31,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (c)=>CartItemCounter()),
       ChangeNotifierProvider(create: (c)=>TotalAmount()),
+      ChangeNotifierProvider(create: (c)=>AddressChanger()),
     ],
 
     child:  MaterialApp(
