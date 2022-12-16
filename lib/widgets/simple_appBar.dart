@@ -30,8 +30,8 @@ class SimpleAppBar extends StatelessWidget with PreferredSizeWidget
       ),
       centerTitle: true,
       title: const Text(
-        "iFood",
-        style: TextStyle(fontSize: 45.0, letterSpacing: 3, color: Colors.white, fontFamily: "Signatra"),
+        "Wow Food",
+        style: TextStyle(fontSize: 45.0, letterSpacing: 3, color: Colors.white, fontFamily: "DancingScript"),
       ),
     );
   }

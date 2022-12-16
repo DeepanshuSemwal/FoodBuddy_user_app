@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:wow_food_user_app/global/global.dart';
 import 'package:wow_food_user_app/widgets/custum_text_field_2.dart';
 import 'package:wow_food_user_app/widgets/simple_appBar.dart';
+
+import '../models/address.dart';
 
 class SaveAddressScreen extends StatelessWidget {
 
@@ -11,28 +16,40 @@ class SaveAddressScreen extends StatelessWidget {
   final _phoneNumber = TextEditingController();
   final _flatNumber = TextEditingController();
   final _city = TextEditingController();
-  final _state = TextEditingController();
+  final _country = TextEditingController();
   final _completeAddress = TextEditingController();
   final _locationController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   List<Placemark>? placemarks;
   Position? position;
 
+
   getUserLocationAddress()async
   {
-    Position position=await Geolocator.getCurrentPosition(
+    LocationPermission permission;
+    permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.deniedForever) {
+        throw Exception("Error");
+      }
+    }
+
+    Position newPosition=await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
+    position=newPosition;
     placemarks=await placemarkFromCoordinates(
-        position.latitude,
-        position.longitude,
+        position!.latitude,
+        position!.longitude,
     );
     Placemark pMark=placemarks![0];
     String completeAddress = '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark.subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea}, ${pMark.administrativeArea} ${pMark.postalCode}, ${pMark.country}';
     _locationController.text=completeAddress;
     _flatNumber.text = '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark.subLocality} ${pMark.locality}';
     _city.text = '${pMark.subAdministrativeArea}, ${pMark.administrativeArea} ${pMark.postalCode}';
-    _state.text = '${pMark.country}';
+    _country.text = '${pMark.country}';
     _completeAddress.text = completeAddress;
   }
 
@@ -45,6 +62,31 @@ class SaveAddressScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
           onPressed:()
           {
+            if(formKey.currentState!.validate())
+              {
+                final model=Address(
+                  name: _name.text.trim(),
+                    phoneNumber: _phoneNumber.text.trim(),
+                  country: _country.text.trim(),
+                  completeAddress: _completeAddress.text.trim(),
+                  flatNumber: _flatNumber.text.trim(),
+                  city: _city.text.trim(),
+                  lat: position!.latitude,
+                  lng: position!.longitude
+                ).toJson();
+
+                // saving data to firebase (customerAddress sub collection has been created)
+                
+                FirebaseFirestore.instance.collection("customer").doc(sharedPreferences!.getString("uid")).collection("customerAddress").doc(DateTime.now().millisecond.toString()).set(model).then((value) 
+                
+                    { 
+                      Fluttertoast.showToast(msg: "New Address has been saved successfully.");
+                      formKey.currentState!.reset();
+                      
+                    }
+                );
+                
+              }
 
           },
           label: Text("Save Address"),
@@ -139,7 +181,7 @@ class SaveAddressScreen extends StatelessWidget {
                     ),
                     CustumTextField2(
                       hint: "State/Country",
-                      controller: _state,
+                      controller: _country,
                     ),
                     CustumTextField2(
                       hint: "Address Line",

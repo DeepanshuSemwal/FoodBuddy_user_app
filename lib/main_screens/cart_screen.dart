@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
 import 'package:wow_food_user_app/assistanceMethods/total_amount.dart';
+import 'package:wow_food_user_app/main_screens/address_screen.dart';
 import 'package:wow_food_user_app/widgets/cart_item_design.dart';
 import 'package:wow_food_user_app/widgets/custum_app_bar.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
@@ -138,6 +139,7 @@ class _CartScreenState extends State<CartScreen> {
             child: FloatingActionButton.extended(
               onPressed: ()
               {
+                Navigator.push(context, MaterialPageRoute(builder: (c)=>AddressScreen()));
 
               },
               label: Text("Check Out",
