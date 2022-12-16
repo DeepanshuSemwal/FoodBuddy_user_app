@@ -13,9 +13,9 @@ class MapUtils
 static Future<void>openMapWithPositions(double latitude,double longitude) async
 {
   String googleMapUrl="https://www.google.com/maps/search/?api=1&query=$latitude,$longitude";
-  if(await canLaunch(googleMapUrl))
+  if(await canLaunchUrl(Uri.parse(googleMapUrl)))
     {
-      await launch(googleMapUrl);
+      await launchUrl(Uri.parse(googleMapUrl));
 
     }
   else
@@ -29,9 +29,9 @@ static Future<void>openMapWithCompleteAddress(String completeAddress) async
 {
   String query=Uri.encodeComponent(completeAddress);
   String googleMapUrl = "https://www.google.com/maps/search/?api=1&query=$query";
-  if(await canLaunch(googleMapUrl))
+  if(await launchUrl(Uri.parse(googleMapUrl)))
     {
-      await launch(googleMapUrl);
+      await launchUrl(Uri.parse(googleMapUrl));
     }
   else
     {
