@@ -3,11 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wow_food_user_app/assistanceMethods/address_changer.dart';
 import 'package:wow_food_user_app/main_screens/save_address.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
 import 'package:wow_food_user_app/widgets/simple_appBar.dart';
 
 import '../global/global.dart';
+import '../models/address.dart';
+import '../widgets/address_design.dart';
 
 class AddressScreen extends StatefulWidget
 {
@@ -60,6 +63,46 @@ class _AddressScreenState extends State<AddressScreen>
               ),
             ),
           ),
+
+
+          Consumer<AddressChanger>(builder: (context, address, c){
+            return Flexible(
+              child: StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance.collection("customer")
+                    .doc(sharedPreferences!.getString("uid"))
+                    .collection("customerAddress")
+                    .snapshots(),
+                builder: (context, snapshot)
+                {
+                  return !snapshot.hasData
+                      ? Center(child: CircularProgressBar(),)
+                      : snapshot.data!.docs.length == 0
+                      ? Container()
+                      : ListView.builder(
+                    itemCount: snapshot.data!.docs.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index)
+                    {
+                      return AddressDesign(
+                        currentIndex: address.count,
+                        value: index,
+                        addressID: snapshot.data!.docs[index].id,
+                        totalAmount: widget.totalAmount,
+                        sellerUID: widget.sellerUID,
+                        model: Address.fromJson(
+                            snapshot.data!.docs[index].data()! as Map<String, dynamic>
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            );
+          }),
+
+
+
+
 
 
         ],
