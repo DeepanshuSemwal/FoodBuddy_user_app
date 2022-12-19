@@ -73,6 +73,7 @@ flutter:
   assets:
     - images/login_image.jpg
     - images/slash_image.jpg
+    - images/food_delivery.jpg
     - slider/
   fonts:
     - family: DancingScript

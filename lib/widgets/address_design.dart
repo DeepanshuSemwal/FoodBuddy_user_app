@@ -154,7 +154,15 @@ class _AddressDesignState extends State<AddressDesign>
               ),
               onPressed: ()
               {
-                    Navigator.push(context, MaterialPageRoute(builder: (c)=>PlacedOrderScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (c)=>PlacedOrderScreen(
+
+                    addressID:widget.addressID,
+                    totalAmount:widget.totalAmount,
+                    sellerUID:widget.sellerUID,
+
+                )));
+               
+                
               },
             )
                 : Container(),

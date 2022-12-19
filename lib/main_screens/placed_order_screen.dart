@@ -1,7 +1,11 @@
 
 import 'package:flutter/material.dart';
 class PlacedOrderScreen extends StatefulWidget {
-  const PlacedOrderScreen({Key? key}) : super(key: key);
+
+  final String? addressID;
+  final  double? totalAmount;
+  final String? sellerUID;
+  PlacedOrderScreen({this.addressID,this.totalAmount,this.sellerUID});
 
   @override
   State<PlacedOrderScreen> createState() => _PlacedOrderScreenState();
@@ -10,9 +14,28 @@ class PlacedOrderScreen extends StatefulWidget {
 class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Material(
 
-      child: Text("testing"),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset("images/food_delivery.jpg"),
+          SizedBox(height: 15,),
+
+          ElevatedButton(
+            child: const Text("Placed Order"),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent,
+            ),
+            onPressed: ()
+            {
+            },
+          )
+
+
+        ],
+      ),
+
     );
   }
 }
