@@ -42,7 +42,7 @@ class _SellersInfoDesignState extends State<SellersInfoDesign> {
                 height:220,
                 fit: BoxFit.cover,
               ),
-              SizedBox(height: 2,),
+              SizedBox(height: 1,),
               Text(
                 widget.model!.sellerName!,
                 style: TextStyle(

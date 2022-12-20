@@ -44,7 +44,7 @@ class _ItemDesignState extends State<ItemDesign> {
                 height:220,
                 fit: BoxFit.cover,
               ),
-              SizedBox(height: 2,),
+              SizedBox(height: 1,),
               Text(
                 widget.model!.itemTitle!,
                 style: TextStyle(
