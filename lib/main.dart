@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     ],
 
     child:  MaterialApp(
-      title: "customer App",
+      title: "User App",
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const SlashScreen(),
     ),

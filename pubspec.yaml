@@ -49,6 +49,8 @@ dependencies:
   fluttertoast: ^8.1.1
   provider: ^6.0.4
   url_launcher: ^6.1.7
+  intl: ^0.17.0
+
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +76,8 @@ flutter:
     - images/login_image.jpg
     - images/slash_image.jpg
     - images/food_delivery.jpg
+    - images/food_delivered.png
+    - images/food_delivery_stages.png
     - slider/
   fonts:
     - family: DancingScript
@@ -82,6 +86,7 @@ flutter:
         - asset: assets/fonts/DancingScript-Regular.ttf
         - asset: assets/fonts/DancingScript-Medium.ttf
         - asset: assets/fonts/DancingScript-SemiBold.ttf
+
 
 
 

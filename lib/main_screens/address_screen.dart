@@ -31,7 +31,7 @@ class _AddressScreenState extends State<AddressScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SimpleAppBar(),
+      appBar: SimpleAppBar(title: "Wow Food",),
 
 
       floatingActionButton: FloatingActionButton.extended(

@@ -117,6 +117,7 @@ class _CartScreenState extends State<CartScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: FloatingActionButton.extended(
+              heroTag: "btn1",
                 onPressed: ()
                 {
                     clearCart(context);
@@ -137,6 +138,7 @@ class _CartScreenState extends State<CartScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: FloatingActionButton.extended(
+              heroTag: "btn2",
               onPressed: ()
               {
                 Navigator.push(context, MaterialPageRoute(builder: (c)=>AddressScreen()));
@@ -195,43 +197,45 @@ class _CartScreenState extends State<CartScreen> {
           ),
 
           // display cart items with quantity numbers
+
+
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection("items").where("itemId",whereIn: separateItemIDs()).orderBy("published",descending: true).snapshots(),
             builder: (context,snapshot)
             {
               return !snapshot.hasData?SliverToBoxAdapter(
                 child: Center(
-                    child: CircularProgressBar(),
+                  child: CircularProgressBar(),
                 ),
               ):snapshot.data!.docs.length==0
                   ? Container()
                   : SliverList(delegate: SliverChildBuilderDelegate((context, index) {
 
                 Items model = Items.fromJson(
-                  snapshot.data!.docs[index].data()! as Map<String, dynamic>,
+                    snapshot.data!.docs[index].data()! as Map<String, dynamic>
                 );
 
                 if(index==0)
-                  {
-                    totalAmount=0;
-                    totalAmount=totalAmount+(model.price!*separateItemQuantityList![index]);
-                  }
+                {
+                  totalAmount=0;
+                  totalAmount=totalAmount+(model.price!*separateItemQuantityList![index]);
+                }
                 else
-                  {
-                    totalAmount=totalAmount+(model.price!*separateItemQuantityList![index]);
-                  }
+                {
+                  totalAmount=totalAmount+(model.price!*separateItemQuantityList![index]);
+                }
                 // come to garbage value
                 if(snapshot.data!.docs.length-1==index)
-                  {
-                    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-                      
-                      Provider.of<TotalAmount>(context,listen: false).displayTotalAmount(totalAmount.toDouble());
-                    });
-                  }
+                {
+                  WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+
+                    Provider.of<TotalAmount>(context,listen: false).displayTotalAmount(totalAmount.toDouble());
+                  });
+                }
 
                 return CartItemDesign(
                   model: model,
-                    context: context,
+                  context: context,
                   quanNumber: separateItemQuantityList![index],
                 );
               },
@@ -243,6 +247,9 @@ class _CartScreenState extends State<CartScreen> {
 
             },
           )
+
+
+
         ],
 
       ),
