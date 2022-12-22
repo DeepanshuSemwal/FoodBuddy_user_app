@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wow_food_user_app/global/global.dart';
+import 'package:wow_food_user_app/main_screens/address_screen.dart';
+import 'package:wow_food_user_app/main_screens/history_screen.dart';
 import 'package:wow_food_user_app/main_screens/my_order_screen.dart';
 
 import '../authentication/auth_screen.dart';
@@ -92,6 +94,7 @@ class CustumDrawer extends StatelessWidget {
                         ),
                         onTap: ()
                         {
+                          Navigator.push(context, MaterialPageRoute(builder: (c)=>HistoryScreen()));
 
                         },
                       ),
@@ -114,7 +117,7 @@ class CustumDrawer extends StatelessWidget {
                         ),
                         onTap: ()
                         {
-
+                            Navigator.push(context, MaterialPageRoute(builder: (c)=>AddressScreen()));
                         },
                       ),
                       ListTile(
