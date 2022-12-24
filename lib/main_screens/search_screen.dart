@@ -48,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
           decoration: InputDecoration(
             hintText: "Search Restaurant",
             hintStyle: TextStyle(
-              color: Colors.white12,
+              color: Colors.white,
             ),
             border: InputBorder.none,
             suffixIcon: IconButton(
