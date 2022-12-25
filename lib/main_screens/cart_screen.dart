@@ -5,7 +5,6 @@ import 'package:wow_food_user_app/assistanceMethods/assistance_methods.dart';
 import 'package:wow_food_user_app/assistanceMethods/total_amount.dart';
 import 'package:wow_food_user_app/main_screens/address_screen.dart';
 import 'package:wow_food_user_app/widgets/cart_item_design.dart';
-import 'package:wow_food_user_app/widgets/custum_app_bar.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
 import 'package:wow_food_user_app/widgets/text_widget_header.dart';
 
@@ -25,6 +24,7 @@ class _CartScreenState extends State<CartScreen> {
 
   List<int>? separateItemQuantityList;
   num totalAmount = 0;
+
 
   @override
   void initState()
@@ -141,7 +141,8 @@ class _CartScreenState extends State<CartScreen> {
               heroTag: "btn2",
               onPressed: ()
               {
-                Navigator.push(context, MaterialPageRoute(builder: (c)=>AddressScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (c)=>AddressScreen(totalAmount: totalAmount.toDouble(),
+                  sellerUID: widget.sellerUID,)));
 
               },
               label: Text("Check Out",
@@ -232,6 +233,7 @@ class _CartScreenState extends State<CartScreen> {
                     Provider.of<TotalAmount>(context,listen: false).displayTotalAmount(totalAmount.toDouble());
                   });
                 }
+
 
                 return CartItemDesign(
                   model: model,

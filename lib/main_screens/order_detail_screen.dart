@@ -6,6 +6,7 @@ import 'package:wow_food_user_app/models/address.dart';
 import 'package:wow_food_user_app/widgets/progress_bar.dart';
 import 'package:wow_food_user_app/widgets/shipment_address_design.dart';
 import 'package:wow_food_user_app/widgets/status_banner.dart';
+import 'package:wow_food_user_app/assistanceMethods/total_amount.dart';
 
 import '../global/global.dart';
 
@@ -19,6 +20,8 @@ class OrderDetailScreen extends StatefulWidget {
 
 class _OrderDetailScreenState extends State<OrderDetailScreen> {
   String orderStatus="";
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +54,10 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Total Amount = " +"₹ "+ dataMap["totalAmount"].toString(),
+                            "Total Amount = " + "₹ "+dataMap["totalAmount"].toString(),
+
+
+
                           style: TextStyle
                             (
                             fontSize: 20,
