@@ -77,7 +77,7 @@ flutter:
     - images/slash_image.jpg
     - images/food_delivery.jpg
     - images/food_delivered.png
-    - images/food_delivery_stages.png
+    - images/food_delivery_stages.jpg
     - slider/
   fonts:
     - family: DancingScript

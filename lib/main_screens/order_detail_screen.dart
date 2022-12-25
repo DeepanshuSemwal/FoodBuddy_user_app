@@ -83,7 +83,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                         ),
                       ),
                       Divider(thickness: 4,),
-                      orderStatus=="ended"? Image.asset("images/food_delivered.png"):Image.asset("images/food_delivery_stages.png"),
+                      orderStatus=="ended"? Image.asset("images/food_delivered.png"):Image.asset("images/food_delivery_stages.jpg"),
                       Divider(thickness: 4,),
                       FutureBuilder<DocumentSnapshot>(
                         future: FirebaseFirestore.instance.collection("customer").doc(sharedPreferences!.getString("uid"))
