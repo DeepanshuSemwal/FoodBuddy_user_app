@@ -29,5 +29,7 @@ This is an online food app which allows user to placed order from different rest
 
 ![8](https://user-images.githubusercontent.com/92510571/209476996-365f4765-0a79-4da5-9a59-3d2fabd5a334.jpg)
 
+![9](https://user-images.githubusercontent.com/92510571/209690796-2bb1beb2-e10e-4889-8a52-1228f08a1880.jpg)
 
+![11](https://user-images.githubusercontent.com/92510571/209690816-a4992d2a-8798-48e8-9797-5632828f0c5a.jpg)
 
